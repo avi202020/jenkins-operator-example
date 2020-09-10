@@ -1,0 +1,15 @@
+apiVersion: forward.webhookrelay.com/v1
+kind: WebhookRelayForward
+metadata:
+  name: forward-to-jenkins
+spec:
+  buckets:
+  - name: jenkins-whr-operator
+    inputs:
+    - name: public-endpoint
+      description: "Endpoint for GitHub"
+      responseBody: "OK"
+      responseStatusCode: 200
+    outputs:
+    - name: jenkins
+      destination: http://jenkins-operator-http-jenkins:8080/github-webhook/
